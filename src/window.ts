@@ -9,6 +9,8 @@ type BotProps = {
   chatflowConfig?: Record<string, unknown>;
   observersConfig?: observersConfigType;
   theme?: BubbleTheme;
+  agencyLogo: ''; // added
+  agencyName: ''; // added
 };
 
 let elementUsed: Element | undefined;
