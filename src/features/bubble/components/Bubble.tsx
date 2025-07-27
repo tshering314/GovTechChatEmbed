@@ -108,7 +108,26 @@ export const Bubble = (props: BubbleProps) => {
         <Show when={isBotStarted()}>
           <div class="relative h-full">
             <Show when={isBotOpened()}>
-              {/* Cross button For only mobile screen use this <Show when={isBotOpened() && window.innerWidth <= 640}>  */}
+              {/* Agency Logo and Name Header */}
+              {(props.agencyLogo || props.agencyName) && (
+                <div
+                  style={{
+                    display: 'flex',
+                    'align-items': 'center',
+                    padding: '8px 12px',
+                    'background-color': '#0055A5',
+                    color: 'white',
+                    'font-weight': 'bold',
+                    'font-size': '16px',
+                    gap: '10px',
+                  }}
+                >
+                  {props.agencyLogo && <img src={props.agencyLogo} alt="Agency Logo" style={{ height: '32px', 'object-fit': 'contain' }} />}
+                  {props.agencyName && <span>{props.agencyName}</span>}
+                </div>
+              )}
+
+              {/* Close Button */}
               <button
                 onClick={closeBot}
                 class="py-2 pr-3 absolute top-0 right-[-8px] m-[6px] bg-transparent text-white rounded-full z-50 disabled:opacity-50 disabled:cursor-not-allowed disabled:brightness-100 transition-all filter hover:brightness-90 active:brightness-75"
@@ -121,43 +140,45 @@ export const Bubble = (props: BubbleProps) => {
                   />
                 </svg>
               </button>
+
+              {/* Bot Component */}
+              <Bot
+                backgroundColor={bubbleProps.theme?.chatWindow?.backgroundColor}
+                formBackgroundColor={bubbleProps.theme?.form?.backgroundColor}
+                formTextColor={bubbleProps.theme?.form?.textColor}
+                badgeBackgroundColor={bubbleProps.theme?.chatWindow?.backgroundColor}
+                bubbleBackgroundColor={bubbleProps.theme?.button?.backgroundColor ?? defaultButtonColor}
+                bubbleTextColor={bubbleProps.theme?.button?.iconColor ?? defaultIconColor}
+                showTitle={bubbleProps.theme?.chatWindow?.showTitle}
+                showAgentMessages={bubbleProps.theme?.chatWindow?.showAgentMessages}
+                title={bubbleProps.theme?.chatWindow?.title}
+                titleAvatarSrc={bubbleProps.theme?.chatWindow?.titleAvatarSrc}
+                titleTextColor={bubbleProps.theme?.chatWindow?.titleTextColor}
+                titleBackgroundColor={bubbleProps.theme?.chatWindow?.titleBackgroundColor}
+                welcomeMessage={bubbleProps.theme?.chatWindow?.welcomeMessage}
+                errorMessage={bubbleProps.theme?.chatWindow?.errorMessage}
+                poweredByTextColor={bubbleProps.theme?.chatWindow?.poweredByTextColor}
+                textInput={bubbleProps.theme?.chatWindow?.textInput}
+                botMessage={bubbleProps.theme?.chatWindow?.botMessage}
+                userMessage={bubbleProps.theme?.chatWindow?.userMessage}
+                feedback={bubbleProps.theme?.chatWindow?.feedback}
+                fontSize={bubbleProps.theme?.chatWindow?.fontSize}
+                footer={bubbleProps.theme?.chatWindow?.footer}
+                sourceDocsTitle={bubbleProps.theme?.chatWindow?.sourceDocsTitle}
+                starterPrompts={bubbleProps.theme?.chatWindow?.starterPrompts}
+                starterPromptFontSize={bubbleProps.theme?.chatWindow?.starterPromptFontSize}
+                chatflowid={props.chatflowid}
+                chatflowConfig={props.chatflowConfig}
+                apiHost={props.apiHost}
+                onRequest={props.onRequest}
+                observersConfig={props.observersConfig}
+                clearChatOnReload={bubbleProps.theme?.chatWindow?.clearChatOnReload}
+                disclaimer={bubbleProps.theme?.disclaimer}
+                dateTimeToggle={bubbleProps.theme?.chatWindow?.dateTimeToggle}
+                renderHTML={props.theme?.chatWindow?.renderHTML}
+                closeBot={closeBot}
+              />
             </Show>
-            <Bot
-              backgroundColor={bubbleProps.theme?.chatWindow?.backgroundColor}
-              formBackgroundColor={bubbleProps.theme?.form?.backgroundColor}
-              formTextColor={bubbleProps.theme?.form?.textColor}
-              badgeBackgroundColor={bubbleProps.theme?.chatWindow?.backgroundColor}
-              bubbleBackgroundColor={bubbleProps.theme?.button?.backgroundColor ?? defaultButtonColor}
-              bubbleTextColor={bubbleProps.theme?.button?.iconColor ?? defaultIconColor}
-              showTitle={bubbleProps.theme?.chatWindow?.showTitle}
-              showAgentMessages={bubbleProps.theme?.chatWindow?.showAgentMessages}
-              title={bubbleProps.theme?.chatWindow?.title}
-              titleAvatarSrc={bubbleProps.theme?.chatWindow?.titleAvatarSrc}
-              titleTextColor={bubbleProps.theme?.chatWindow?.titleTextColor}
-              titleBackgroundColor={bubbleProps.theme?.chatWindow?.titleBackgroundColor}
-              welcomeMessage={bubbleProps.theme?.chatWindow?.welcomeMessage}
-              errorMessage={bubbleProps.theme?.chatWindow?.errorMessage}
-              poweredByTextColor={bubbleProps.theme?.chatWindow?.poweredByTextColor}
-              textInput={bubbleProps.theme?.chatWindow?.textInput}
-              botMessage={bubbleProps.theme?.chatWindow?.botMessage}
-              userMessage={bubbleProps.theme?.chatWindow?.userMessage}
-              feedback={bubbleProps.theme?.chatWindow?.feedback}
-              fontSize={bubbleProps.theme?.chatWindow?.fontSize}
-              footer={bubbleProps.theme?.chatWindow?.footer}
-              sourceDocsTitle={bubbleProps.theme?.chatWindow?.sourceDocsTitle}
-              starterPrompts={bubbleProps.theme?.chatWindow?.starterPrompts}
-              starterPromptFontSize={bubbleProps.theme?.chatWindow?.starterPromptFontSize}
-              chatflowid={props.chatflowid}
-              chatflowConfig={props.chatflowConfig}
-              apiHost={props.apiHost}
-              onRequest={props.onRequest}
-              observersConfig={props.observersConfig}
-              clearChatOnReload={bubbleProps.theme?.chatWindow?.clearChatOnReload}
-              disclaimer={bubbleProps.theme?.disclaimer}
-              dateTimeToggle={bubbleProps.theme?.chatWindow?.dateTimeToggle}
-              renderHTML={props.theme?.chatWindow?.renderHTML}
-              closeBot={closeBot}
-            />
           </div>
         </Show>
       </div>

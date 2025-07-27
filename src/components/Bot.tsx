@@ -171,6 +171,8 @@ export type BotProps = {
   disclaimer?: DisclaimerPopUpTheme;
   dateTimeToggle?: DateTimeToggleTheme;
   renderHTML?: boolean;
+  agencyLogo?: string;
+  agencyName?: string;
   closeBot?: () => void;
 };
 

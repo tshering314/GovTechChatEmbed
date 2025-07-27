@@ -7,4 +7,6 @@ export const defaultBotProps: BubbleProps = {
   chatflowConfig: undefined,
   theme: undefined,
   observersConfig: undefined,
+  agencyLogo: '', // added
+  agencyName: '', // added
 };
